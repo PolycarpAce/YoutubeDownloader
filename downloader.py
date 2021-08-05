@@ -1,42 +1,27 @@
 from pytube import YouTube
 
-myVideo = YouTube("https://youtu.be/vvpb8IdDZZI")
+url = input("Enter the url of the video ")
+yt = YouTube(url)
 
-print("\n")
-print("*****************title*******************")
+#Return us all the available formates for the video
+formats = yt.streams.all()
 
-#get video title
-#print("video Title :" +myVideo.title)
+#list of all formarts available
+video = list(enumerate(formats)) 
 
-#get thumbnail image
-print("\n")
-print("*****************Thumnail Image*******************")
+for i in video:
+	print(i)
 
-#print(myVideo.thumbnail_url)
+#give user option to selct the formart they want
+option = int(input("choose the formart"))
 
-#get all Streams
 
-print("\n")
-print("*****************Video Streams*******************")
+download = formats[option]
+dl.download()
 
-#print(myVideo.streams.all)
 
-print("\n")
-print("*****************Download Video*******************")
-print("*****************Wait until Downloadis complete*******************")
+print ("Video downloaded Succesfuly")
 
-#download video
-myVideo.streams.first().download()
-
-print("Video is Downloaded")
-
-print("\n")
-print("*****************Video Subtitle*******************")
-
-caption = myVideo.captions.get_by_language_code('en')
-
-print("Video English Subtitle : ")
-print(caption.generate_srt_captions())
 
 
 
